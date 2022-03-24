@@ -12,11 +12,11 @@ const generateIdValidators = () => [
 ]
 
 const updateUserValidators = ()=>[
-    check('id').notEmpty().isNumeric().withMessage("Invalid id"),
-    check('name').isLength({max:50}).withMessage("Invalid name"),
-    check('lastname').isLength({max:50}).withMessage("Invalid lastname"),
+    check('id').notEmpty().isNumeric().isNumeric().isLength({max:11}).withMessage("Invalid id"),
+    check('name').optional().isLength({max:50}).withMessage("Invalid name"),
+    check('lastname').optional().isLength({max:50}).withMessage("Invalid lastname"),
     check('phone').optional().isLength({min:10, max:10}).isNumeric().withMessage("Invalid phone"),
-    check('address').isLength({max:150}).withMessage("Invalid address"),
+    check('address').optional().isLength({max:150}).withMessage("Invalid address"),
 ]
 const reporter = (req, res, next) => {
     const errors = validationResult(req);
